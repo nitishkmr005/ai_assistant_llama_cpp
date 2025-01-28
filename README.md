@@ -1,4 +1,4 @@
-# AI Chat Assistant
+# AI Chat Assistant for open-source LLM models
 
 A Flask-based chat application that uses local LLM models through llama-cpp-python. This application provides a ChatGPT-like interface for interacting with open-source language models.
 
