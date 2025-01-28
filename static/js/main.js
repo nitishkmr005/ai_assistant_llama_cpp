@@ -40,12 +40,13 @@ document.addEventListener('DOMContentLoaded', function() {
         highlight: function (str, lang) {
             if (lang && Prism.languages[lang]) {
                 try {
-                    return '<pre><code class="language-' + lang + '">' +
+                    return '<pre class="language-' + lang + '" data-language="' + lang + '">' +
+                           '<code class="language-' + lang + '">' +
                            Prism.highlight(str, Prism.languages[lang], lang) +
                            '</code><button class="copy-button">Copy</button></pre>';
                 } catch (__) {}
             }
-            return '<pre><code class="language-' + lang + '">' +
+            return '<pre class="language-text" data-language="text"><code class="language-' + lang + '">' +
                    md.utils.escapeHtml(str) +
                    '</code><button class="copy-button">Copy</button></pre>';
         }

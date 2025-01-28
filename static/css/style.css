@@ -150,11 +150,12 @@ body {
 }
 
 .assistant-message pre {
-    background-color: #2A2A2A !important;
+    background-color: #0D1117;
     border-radius: 8px;
     margin: 1rem 0;
     position: relative;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    font-family: 'Fira Code', Consolas, Monaco, 'Courier New', monospace;
 }
 
 .assistant-message pre code {
@@ -448,4 +449,99 @@ pre:hover .copy-button {
 
 .chat-messages::-webkit-scrollbar-thumb:hover {
     background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Language-specific headers */
+.assistant-message pre[class*="language-"] {
+    padding-top: 2.5rem;
+}
+
+.assistant-message pre[class*="language-"]::before {
+    content: attr(data-language);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: #E5E5E5;
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    border-radius: 8px 8px 0 0;
+}
+
+/* Language-specific styling */
+.assistant-message pre.language-python::before {
+    background: linear-gradient(90deg, rgba(55, 118, 171, 0.1), transparent);
+    border-left: 3px solid #3776AB;
+}
+
+.assistant-message pre.language-javascript::before {
+    background: linear-gradient(90deg, rgba(247, 223, 30, 0.1), transparent);
+    border-left: 3px solid #F7DF1E;
+}
+
+.assistant-message pre.language-typescript::before {
+    background: linear-gradient(90deg, rgba(49, 120, 198, 0.1), transparent);
+    border-left: 3px solid #3178C6;
+}
+
+.assistant-message pre.language-bash::before,
+.assistant-message pre.language-shell::before {
+    background: linear-gradient(90deg, rgba(67, 216, 84, 0.1), transparent);
+    border-left: 3px solid #43D854;
+    content: "Terminal";
+}
+
+.assistant-message pre.language-sql::before {
+    background: linear-gradient(90deg, rgba(249, 105, 14, 0.1), transparent);
+    border-left: 3px solid #F9690E;
+}
+
+.assistant-message pre.language-json::before {
+    background: linear-gradient(90deg, rgba(251, 192, 45, 0.1), transparent);
+    border-left: 3px solid #FBC02D;
+}
+
+.assistant-message pre.language-html::before {
+    background: linear-gradient(90deg, rgba(227, 76, 38, 0.1), transparent);
+    border-left: 3px solid #E34C26;
+}
+
+.assistant-message pre.language-css::before {
+    background: linear-gradient(90deg, rgba(86, 61, 124, 0.1), transparent);
+    border-left: 3px solid #563D7C;
+}
+
+/* Syntax highlighting improvements */
+.token.comment {
+    color: #6A9955;
+    font-style: italic;
+}
+
+.token.string {
+    color: #CE9178;
+}
+
+.token.number {
+    color: #B5CEA8;
+}
+
+.token.keyword {
+    color: #569CD6;
+    font-weight: 500;
+}
+
+.token.function {
+    color: #DCDCAA;
+}
+
+.token.class-name {
+    color: #4EC9B0;
+}
+
+.token.operator {
+    color: #D4D4D4;
 } 
