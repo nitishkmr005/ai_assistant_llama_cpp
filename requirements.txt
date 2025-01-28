@@ -1,0 +1,4 @@
+flask==2.0.3
+werkzeug==2.0.3
+click==8.0.4
+llama-cpp-python>=0.2.23 
