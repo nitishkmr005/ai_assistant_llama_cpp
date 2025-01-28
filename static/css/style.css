@@ -280,7 +280,7 @@ textarea#messageInput:focus {
 /* Copy button for code blocks */
 .copy-button {
     position: absolute;
-    top: 2.5rem;
+    top: 8px;
     right: 0.8rem;
     padding: 0.3rem 0.6rem;
     background: #404040;
@@ -297,8 +297,13 @@ textarea#messageInput:focus {
 }
 
 .copy-button::before {
-    content: '��';
+    content: 'Copy';
     font-size: 1em;
+}
+
+.copy-button.copied::before {
+    content: 'Copied!';
+    color: #10B981;
 }
 
 pre:hover .copy-button {

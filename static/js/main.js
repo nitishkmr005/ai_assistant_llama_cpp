@@ -56,14 +56,26 @@ document.addEventListener('DOMContentLoaded', function() {
         element.querySelectorAll('pre button.copy-button').forEach(button => {
             button.addEventListener('click', function() {
                 const code = this.parentElement.querySelector('code');
-                navigator.clipboard.writeText(code.textContent);
+                // Fallback copy method
+                const textArea = document.createElement('textarea');
+                textArea.value = code.textContent;
+                textArea.style.position = 'fixed';  // Avoid scrolling to bottom
+                textArea.style.opacity = '0';
+                document.body.appendChild(textArea);
+                textArea.select();
                 
-                // Show feedback
-                const originalText = this.textContent;
-                this.textContent = 'Copied!';
-                setTimeout(() => {
-                    this.textContent = originalText;
-                }, 2000);
+                try {
+                    document.execCommand('copy');
+                    // Show success feedback
+                    this.classList.add('copied');
+                    setTimeout(() => {
+                        this.classList.remove('copied');
+                    }, 2000);
+                } catch (err) {
+                    console.error('Failed to copy text:', err);
+                } finally {
+                    document.body.removeChild(textArea);
+                }
             });
         });
     }
