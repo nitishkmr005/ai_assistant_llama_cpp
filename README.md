@@ -46,6 +46,12 @@ pip install -r requirements.txt
 ```bash
 mkdir models
 # Place your .gguf model file in the models directory
+
+# Download Phi-4 model
+wget https://huggingface.co/TheBloke/phi-4-GGUF/resolve/main/phi-4-Q8_0.gguf -P models/
+
+# Download OpenHermes 2.5 Mistral model
+wget https://huggingface.co/TheBloke/OpenHermes-2.5-Mistral-7B-GGUF/resolve/main/openhermes-2.5-mistral-7b.Q4_K_M.gguf -P models/
 ```
 
 ## Configuration
