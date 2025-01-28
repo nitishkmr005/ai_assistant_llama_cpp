@@ -13,8 +13,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
 </head>
 <body>
-    <div class="chat-container">
-        <div class="header">
+    <div class="navbar">
+        <div class="nav-left">
             <div class="model-selector">
                 <select id="modelSelect">
                     {% for model in models %}
@@ -22,19 +22,30 @@
                     {% endfor %}
                 </select>
             </div>
+        </div>
+        <div class="nav-right">
             <div class="temperature-control">
                 <span>Temperature:</span>
                 <input type="range" id="temperatureSlider" min="0" max="1" step="0.1" value="0.7">
                 <span id="temperatureValue">0.7</span>
             </div>
         </div>
-        
+    </div>
+    <div class="chat-container">
+        <div class="welcome-container">
+            <h1>What can I help with?</h1>
+        </div>
         <div class="chat-messages" id="chatMessages">
             <!-- Messages will be inserted here -->
         </div>
         
         <div class="input-area">
-            <input type="text" id="messageInput" placeholder="Message AI Assistant...">
+            <textarea id="messageInput" placeholder="Message AI Assistant..." rows="1"></textarea>
+            <button id="stopButton" class="stop-button" style="display: none;">
+                <svg viewBox="0 0 24 24" class="stop-icon">
+                    <rect x="6" y="6" width="12" height="12"/>
+                </svg>
+            </button>
             <button id="sendButton">
                 <svg viewBox="0 0 24 24" class="send-icon">
                     <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path>
