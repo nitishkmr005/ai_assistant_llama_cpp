@@ -8,6 +8,20 @@ document.addEventListener('DOMContentLoaded', function() {
     const welcomeContainer = document.querySelector('.welcome-container');
     const stopButton = document.getElementById('stopButton');
 
+    // Function to check if we're scrolled to bottom
+    function isScrolledToBottom() {
+        const threshold = 100; // pixels from bottom
+        return (chatMessages.scrollHeight - chatMessages.scrollTop - chatMessages.clientHeight) < threshold;
+    }
+
+    // Function to scroll to bottom smoothly
+    function scrollToBottom() {
+        chatMessages.scrollTo({
+            top: chatMessages.scrollHeight,
+            behavior: 'smooth'
+        });
+    }
+
     // Controller for aborting fetch requests
     let abortController = null;
 
@@ -198,7 +212,10 @@ document.addEventListener('DOMContentLoaded', function() {
                                         markdownText += data.response;
                                         contentDiv.innerHTML = md.render(markdownText);
                                         setupCodeBlocks(contentDiv);
-                                        chatMessages.scrollTop = chatMessages.scrollHeight;
+                                        // Only auto-scroll if we're already at the bottom
+                                        if (isScrolledToBottom()) {
+                                            scrollToBottom();
+                                        }
                                     } catch (e) {
                                         console.error('Error parsing JSON:', e);
                                     }
